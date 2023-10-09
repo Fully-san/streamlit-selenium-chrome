@@ -26,6 +26,8 @@ driver = webdriver.Firefox(
 )
 driver.get(URL)
 
+st.code(driver.page_source)
+
 try:
     WebDriverWait(driver, TIMEOUT).until(
         EC.visibility_of_element_located((By.XPATH, XPATH,))
