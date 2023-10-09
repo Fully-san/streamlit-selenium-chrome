@@ -3,8 +3,8 @@ import requests
 import streamlit as st
 import os, sys
 
-url = 'http://example.com'
+url = 'https://marvelsnapzone.com/news/patch-notes/'
 
 page = requests.get(url)
-soup = BeautifulSoup(page.content , 'html.parser')
-st.write(soup)
+soup = BeautifulSoup(page.text , 'html.parser')
+st.write(soup.prettify())
