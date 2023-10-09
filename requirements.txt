@@ -1,3 +1,2 @@
-streamlit
-seleniumbase
+selenium
 webdriver-manager
