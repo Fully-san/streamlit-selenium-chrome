@@ -1,1 +1,8 @@
+click
+st_pages
+st_clickable_images
+bs4
 seleniumbase
+webdriver_manager
+git.repo
+pillow
