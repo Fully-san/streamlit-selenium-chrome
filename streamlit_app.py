@@ -25,6 +25,6 @@ with st.echo():
     options.add_argument('--headless')
 
     driver = get_driver()
-    driver.get("http://example.com")
+    driver.get("https://www.deepl.com/fr/translator")
 
     st.code(driver.page_source)
