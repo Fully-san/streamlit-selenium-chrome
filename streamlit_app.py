@@ -15,10 +15,13 @@ XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
 TIMEOUT = 20
 
 st.title("Test Selenium")
-st.markdown("You should see some random Football match text below in about 21 seconds")
+st.markdown("You should see some cards")
 
 firefoxOptions = Options()
 firefoxOptions.add_argument("--headless")
+firefoxOptions.add_argument('--disable-dev-shm-usage')
+# firefoxOptions.add_argument('--disable-extensions')
+# firefoxOptions.add_argument('--disable-gpu')
 service = Service(GeckoDriverManager().install())
 driver = webdriver.Firefox(
     options=firefoxOptions,
