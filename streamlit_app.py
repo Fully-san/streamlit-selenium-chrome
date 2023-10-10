@@ -27,11 +27,13 @@ driver.get(URL)
 html = driver.page_source
 soup = BeautifulSoup(html, 'html.parser')
 
-links = soup.findAll('a', {'class': 'simple-card'})
+# links = soup.findAll('a', {'class': 'simple-card'})
+links = soup.findAll('a')
+
 
 st.write(links)
 
-st.code(soup.contents)
+st.code(soup.text)
 
 # try:
 #     WebDriverWait(driver, TIMEOUT).until(
