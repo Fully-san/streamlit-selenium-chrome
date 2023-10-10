@@ -15,7 +15,7 @@ URL = "https://marvelsnapzone.com/news/patch-notes/"
 XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
 TIMEOUT = 20
 
-st.title("Test Selenium 4")
+st.title("Test Selenium 5")
 st.markdown("You should see some cards")
 
 firefoxOptions = Options()
@@ -31,6 +31,10 @@ driver = webdriver.Firefox(
 driver.get(URL)
 html = driver.page_source
 soup = BeautifulSoup(html, 'html.parser')
+
+links = soup.findAll('a', {'class': 'simple-card'})
+
+st.write(links)
 
 st.code(driver.page_source)
 
