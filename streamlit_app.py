@@ -14,14 +14,14 @@ URL = "https://marvelsnapzone.com/news/patch-notes/"
 XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
 TIMEOUT = 20
 
-st.title("Test Selenium 2")
+st.title("Test Selenium 3")
 st.markdown("You should see some cards")
 
 firefoxOptions = Options()
 firefoxOptions.add_argument("--headless")
 firefoxOptions.add_argument('--disable-dev-shm-usage')
 firefoxOptions.add_argument('--disable-extensions')
-# firefoxOptions.add_argument('--disable-gpu')
+firefoxOptions.add_argument('--disable-gpu')
 service = Service(GeckoDriverManager().install())
 driver = webdriver.Firefox(
     options=firefoxOptions,
@@ -31,14 +31,14 @@ driver.get(URL)
 
 st.code(driver.page_source)
 
-try:
-    WebDriverWait(driver, TIMEOUT).until(
-        EC.visibility_of_element_located((By.XPATH, XPATH,))
-    )
+# try:
+#     WebDriverWait(driver, TIMEOUT).until(
+#         EC.visibility_of_element_located((By.XPATH, XPATH,))
+#     )
 
-except TimeoutException:
-    st.warning("Timed out waiting for page to load")
-    driver.quit()
+# except TimeoutException:
+#     st.warning("Timed out waiting for page to load")
+#     driver.quit()
 
 # time.sleep(10)
 # elements = driver.find_elements_by_xpath(XPATH)
