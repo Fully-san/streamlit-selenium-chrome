@@ -25,7 +25,7 @@ service = Service(GeckoDriverManager().install())
 driver = webdriver.Firefox(service=service, options=firefoxOptions)
 driver.get(URL)
 html = driver.page_source
-soup = BeautifulSoup(html, 'html.parser')
+soup = BeautifulSoup(html)
 
 links = soup.findAll('a', {'class': 'simple-card'})
 
