@@ -32,7 +32,7 @@ links = soup.findAll('a', {'class': 'simple-card'})
 # links = soup.find("a", class_="simple-card")
 
 
-# st.write(links)
+st.write(links)
 
 # try:
 #     WebDriverWait(driver, TIMEOUT).until(
