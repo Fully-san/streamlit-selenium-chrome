@@ -28,7 +28,7 @@ html = driver.page_source
 # soup = BeautifulSoup(html, 'html.parser')
 soup = BeautifulSoup('<a class="social-link">some link</a><a class="simple-card">some link</a>')
 
-# links = soup.findAll('a', {'class': 'simple-card'})
+links = soup.findAll('a', {'class': 'simple-card'})
 # links = soup.find("a", class_="simple-card")
 
 
