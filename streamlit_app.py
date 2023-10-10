@@ -28,12 +28,10 @@ html = driver.page_source
 soup = BeautifulSoup(html, 'html.parser')
 
 # links = soup.findAll('a', {'class': 'simple-card'})
-links = soup.findAll('a')
+links = soup.find("a", class_="simple-card'")
 
 
 st.write(links)
-
-st.code(soup.text)
 
 # try:
 #     WebDriverWait(driver, TIMEOUT).until(
