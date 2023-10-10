@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.firefox import GeckoDriverManager
 
-URL = "https://marvelsnapzone.com/news/patch-notes/"
+URL = "https://marvelsnapzone.com/cards/"
 
 st.title("Test Selenium 5")
 st.markdown("You should see some cards")
