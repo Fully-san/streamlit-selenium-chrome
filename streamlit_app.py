@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup
 import streamlit as st
 import time
 
@@ -10,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.firefox import GeckoDriverManager
 
-URL = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
+MARVELSNAPZONE_URL = 'https://marvelsnapzone.com/cards'
 XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
 TIMEOUT = 20
 
@@ -18,26 +19,35 @@ st.title("Test Selenium")
 st.markdown("You should see some random Football match text below in about 21 seconds")
 
 firefoxOptions = Options()
-firefoxOptions.add_argument("--headless")
+firefoxOptions.add_argument("--headless=new")
+firefoxOptions.add_argument('--disable-dev-shm-usage')
+firefoxOptions.add_argument('--disable-extensions')
+firefoxOptions.add_argument('--disable-gpu')
 service = Service(GeckoDriverManager().install())
-driver = webdriver.Firefox(
-    options=firefoxOptions,
-    service=service,
-)
-driver.get(URL)
+driver = webdriver.Firefox(service=service, options=firefoxOptions)
+driver.get(MARVELSNAPZONE_URL)
+html = driver.page_source
+soup = BeautifulSoup(html, 'html.parser')
+links = soup.findAll('a', {'class': 'simple-card'})
+st.write(links)
 
-st.code(driver.page_source)
+# try:
+#     WebDriverWait(driver, TIMEOUT).until(
+#         EC.visibility_of_element_located((By.XPATH, XPATH,))
+#     )
 
-try:
-    WebDriverWait(driver, TIMEOUT).until(
-        EC.visibility_of_element_located((By.XPATH, XPATH,))
-    )
-
-except TimeoutException:
-    st.warning("Timed out waiting for page to load")
-    driver.quit()
+# except TimeoutException:
+#     st.warning("Timed out waiting for page to load")
+#     driver.quit()
 
 # time.sleep(10)
 # elements = driver.find_elements_by_xpath(XPATH)
 # st.write([el.text for el in elements])
 # driver.quit()
+
+    # browser = webdriver.Chrome(service=chrome_service, options=chrome_options)
+    # browser.get(MARVELSNAPZONE_URL)
+    # html = browser.page_source
+    # soup = BeautifulSoup(html, 'html.parser')
+
+    # links = soup.findAll('a', {'class': 'simple-card'})
