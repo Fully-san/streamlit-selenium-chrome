@@ -12,8 +12,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.firefox import GeckoDriverManager
 
 URL = "https://marvelsnapzone.com/news/patch-notes/"
-XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
-TIMEOUT = 20
 
 st.title("Test Selenium 5")
 st.markdown("You should see some cards")
@@ -24,10 +22,7 @@ firefoxOptions.add_argument('--disable-dev-shm-usage')
 firefoxOptions.add_argument('--disable-extensions')
 firefoxOptions.add_argument('--disable-gpu')
 service = Service(GeckoDriverManager().install())
-driver = webdriver.Firefox(
-    options=firefoxOptions,
-    service=service,
-)
+driver = webdriver.Firefox(service=service, options=firefoxOptions)
 driver.get(URL)
 html = driver.page_source
 soup = BeautifulSoup(html, 'html.parser')
@@ -36,7 +31,7 @@ links = soup.findAll('a', {'class': 'simple-card'})
 
 st.write(links)
 
-st.code(driver.page_source)
+st.code(soup.contents)
 
 # try:
 #     WebDriverWait(driver, TIMEOUT).until(
