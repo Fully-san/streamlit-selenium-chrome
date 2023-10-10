@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup
 import streamlit as st
 import time
 
@@ -14,7 +15,7 @@ URL = "https://marvelsnapzone.com/news/patch-notes/"
 XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
 TIMEOUT = 20
 
-st.title("Test Selenium 3")
+st.title("Test Selenium 4")
 st.markdown("You should see some cards")
 
 firefoxOptions = Options()
@@ -28,6 +29,8 @@ driver = webdriver.Firefox(
     service=service,
 )
 driver.get(URL)
+html = driver.page_source
+soup = BeautifulSoup(html, 'html.parser')
 
 st.code(driver.page_source)
 
