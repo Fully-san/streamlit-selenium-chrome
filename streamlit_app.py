@@ -27,9 +27,10 @@ service = Service(GeckoDriverManager().install())
 driver = webdriver.Firefox(service=service, options=firefoxOptions)
 driver.get(MARVELSNAPZONE_URL)
 html = driver.page_source
-soup = BeautifulSoup(html, 'html.parser')
-links = soup.findAll('a', {'class': 'simple-card'})
-st.write(links)
+st.code(html)
+# soup = BeautifulSoup(html, 'html.parser')
+# links = soup.findAll('a', {'class': 'simple-card'})
+# st.write(links)
 
 # try:
 #     WebDriverWait(driver, TIMEOUT).until(
